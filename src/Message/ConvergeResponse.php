@@ -25,7 +25,7 @@ class ConvergeResponse extends AbstractResponse
 
     public function getMessage()
     {
-        if (!$this->isSuccessful()) {
+        if (isset($this->data['errorCode']) && !$this->isSuccessful()) {
             return isset($this->data['errorMessage']) ? $this->data['errorMessage'] : null;
         }
 
@@ -34,7 +34,7 @@ class ConvergeResponse extends AbstractResponse
 
     public function getCode()
     {
-        if (!$this->isSuccessful()) {
+        if (isset($this->data['errorCode']) && !$this->isSuccessful()) {
             return isset($this->data['errorCode']) ? $this->data['errorCode'] : null;
         }
 
